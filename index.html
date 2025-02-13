@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine? ❤️</title>
+    <style>
+        body {
+            background-color: pink;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        .container {
+            display: none;
+            margin-top: 50px;
+        }
+        h1 {
+            color: red;
+            font-size: 3rem;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+        button:hover {
+            background-color: darkred;
+        }
+        .balloons {
+            position: absolute;
+            top: 100vh;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 3rem;
+            animation: float 5s infinite ease-in-out;
+        }
+        @keyframes float {
+            0% { top: 100vh; }
+            100% { top: -10vh; }
+        }
+    </style>
+</head>
+<body>
+    <div id="intro">
+        <h1>What are you looking at? 🤔❤️</h1>
+        <button onclick="startValentine()">Continue 💘</button>
+    </div>
+    
+    <div class="container" id="valentine">
+        <h1>Will You Be My Valentine? ❤️🎈</h1>
+        <button onclick="showLove()">YES 💖</button>
+        <button onclick="showLove()">OH YES 💞</button>
+    </div>
+
+    <h1 id="response" style="display:none;">Oh yes! I knew you’d say yes! 😍 Be my Valentine! Love you more! ❤️💋</h1>
+
+    <script>
+        function startValentine() {
+            document.getElementById('intro').style.display = 'none';
+            document.getElementById('valentine').style.display = 'block';
+            createBalloons();
+        }
+        
+        function showLove() {
+            document.getElementById('valentine').style.display = 'none';
+            document.getElementById('response').style.display = 'block';
+        }
+        
+        function createBalloons() {
+            for (let i = 0; i < 10; i++) {
+                let balloon = document.createElement('div');
+                balloon.className = 'balloons';
+                balloon.innerHTML = '🎈';
+                balloon.style.left = Math.random() * 100 + 'vw';
+                balloon.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                document.body.appendChild(balloon);
+            }
+        }
+    </script>
+</body>
+</html>
